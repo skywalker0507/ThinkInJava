@@ -1,5 +1,6 @@
 package com.skywalker.proxy
 
+import org.junit.jupiter.api.Test
 import java.lang.reflect.InvocationHandler
 import java.lang.reflect.Method
 import java.lang.reflect.Proxy
@@ -27,21 +28,18 @@ class ClickListenerProxy {
                             if (args[0]==Int::class.java)
                             println("Proxy -> onClick ${args[0]}")
                         }
-
-
                     }
-
                     return null
                 }
             }) as OnClickListener
         }
-
-
     }
 }
 
-fun main(args: Array<String>) {
+@Test fun test(args: Array<String>) {
     val listener = ClickListenerProxy.create()
     listener.onClick(1)
+
+
 
 }
